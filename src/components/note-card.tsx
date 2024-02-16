@@ -3,19 +3,19 @@ import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { X } from 'lucide-react'
 
-interface NodeCardProps {
+interface NoteCardProps {
   note: {
     date: Date
     content: string
   }
 }
 
-export function NodeCard({note}: NodeCardProps) {
+export function NoteCard({note}: NoteCardProps) {
     return (
       <Dialog.Root>
         <Dialog.Trigger className='text-left rounded-md bg-slate-800 p-5 flex flex-col gap-3 overflow-hidden relative outline-none hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400'>
           <span className='text-sm font-medium text-slate-300'>
-            {note.date.toISOString()}
+            {formatDistanceToNow(note.date, {locale: ptBR, addSuffix: true})}
           </span>
           <p className='text-sm leading-6 text-slate-400'>
             {note.content}
